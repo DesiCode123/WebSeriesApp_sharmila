@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Top 10 TV Series</title>
+    <meta charset="UTF-8">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+
+<main>
+    <div class="container">
+        <h1>Top 10 TV Series</h1>
+        <div class="flex-right">
+            <a class="btn btn-right" href="/report/top10/download">Download as TXT</a>
+            <a href="/" class="btn btn-right">Back</a>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Genres</th>
+                <th>Network</th>
+                <th>Premiered</th>
+                <th>Ended</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="series : ${top10}">
+                <td th:text="${series.name}"></td>
+                <td th:text="${series.rating}"></td>
+                <td>
+                    <ul>
+                        <li th:each="genre : ${series.genres}" th:text="${genre}"></li>
+                    </ul>
+                </td>
+                <td>
+                    <span th:text="${series.network?.name}"></span>
+                    <span th:text="${series.network?.country}"></span>
+                </td>
+                <!--                <td th:text="${#temporals.format(series.premiered, 'yyyy-MM-dd')}"></td>-->
+                <td th:text="${#dates.format(series.premiered, 'dd-MM-yyyy')}"></td>
+                <td th:text="${series.ended != null ? #dates.format(series.ended, 'dd-MM-yyyy') : 'Present'}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<div th:replace="~{footer :: footer}"></div>
+
+</body>
+</html>

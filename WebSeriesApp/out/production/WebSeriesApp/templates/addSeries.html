@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add series</title>
+    <link href="/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<main>
+    <div class="container">
+        <h1>Top 10 TV Series</h1>
+        <div class="flex-right">
+            <a href="/" class="btn btn-right">Back</a>
+        </div>
+        <form class="series-form" th:action="@{/save-series}" th:object="${series}" method="POST">
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{network.id}">
+
+            <label for="name"> Name of Tv Series</label>
+            <input type="text" id="name" name="name" th:field="*{name}" required>
+
+            <label for="rating">Rating</label>
+            <input type="text" id="rating" name="rating" th:field="*{rating}" required>
+
+            <label for="Network">Network name</label>
+            <input type="text" id="network" name="network" th:field="*{network.name}" required>
+
+            <label for="country">Network country</label>
+            <input type="text" id="country" name="country" th:field="*{network.country}" required>
+
+            <label for="genres">Genres</label>
+            <input type="text" id="genres" name="genres" th:field="*{genres}" required>
+
+            <!--        <label for="premiered">Premiered date</label>-->
+            <!--        <input type="date" id="premiered" name="premiered" th:field="*{premiered}" required>-->
+
+
+            <!--        <label for="ended">Ended date</label>-->
+            <!--        <input type="date" id="ended" name="ended" th:field="*{ended}" required>-->
+
+            <input type="submit" class="btn" value="Submit">
+        </form>
+    </div>
+</main>
+<div th:replace="~{footer :: footer}"></div>
+</body>
+</html>

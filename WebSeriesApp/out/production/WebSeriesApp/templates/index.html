@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <title>TV Series Reports</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+
+<main class="card-container">
+    <div class="report-card">
+        <img src="images/next_week.png" alt="Next week">
+        <h3>Next Week</h3>
+        <p>This report will provide you the details for the shows for next week</p>
+        <a href="#" class="btn">View Report</a>
+    </div>
+
+    <div class="report-card">
+        <img src="images/top10.png" alt="Game of Thrones TV Series">
+        <h3>Top 10</h3>
+        <p>This will give you the top 10 series</p>
+        <a th:href="@{/report/top10}" class="btn">View Report</a>
+    </div>
+
+    <div class="report-card">
+        <img src="images/topnetworks.png" alt="Fargo TV Series">
+        <h3>Top Network</h3>
+        <p>The top tv network details</p>
+        <a href="#" class="btn">View Report</a>
+    </div>
+
+    <div class="report-card">
+        <img src="images/summery.png" alt="Taboo TV Series">
+        <h3>Summary</h3>
+        <p>The summary of all the tv series</p>
+        <a th:href="@{/summary/all}" class="btn">View Report</a>
+    </div>
+
+    <div class="report-card">
+        <img src="images/best_episodes.png" alt="Best Episode TV Series">
+        <h3>Best Episode</h3>
+        <p>Best episodes of all time</p>
+        <a th:href="@{/summary/best}" class="btn">View Report</a>
+    </div>
+    <div class="report-card">
+        <img src="images/manage.png" alt="Best Episode TV Series">
+        <h3>Manage Tv Series</h3>
+        <p>Create, Update, Delete</p>
+        <a th:href="@{/all-series}" class="btn">Manage</a>
+    </div>
+</main>
+
+<div th:replace="~{footer :: footer}"></div>
+
+</body>
+</html>

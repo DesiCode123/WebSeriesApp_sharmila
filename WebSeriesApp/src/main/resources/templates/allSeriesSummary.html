@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Series Summary</title>
+    <meta charset="UTF-8">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+
+<main>
+    <div class="container">
+        <h1>All Series Summary</h1>
+        <div class="flex-right">
+            <a class="btn btn-right" href="/summary/all/download">Download as Text</a>
+            <a href="/" class="btn btn-right">Back</a>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Network</th>
+                <th>Genre</th>
+                <th>Total Episodes</th>
+                <th>Released Episodes</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="series : ${allSeriesSummary}">
+                <td th:text="${series.name}"></td>
+                <td th:text="${series.network}"></td>
+                <td th:text="${series.genre}"></td>
+                <td th:text="${series.episodeCount}"></td>
+                <td th:text="${series.releasedEpisodeCount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<div th:replace="~{footer :: footer}"></div>
+
+</body>
+</html>

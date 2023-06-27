@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Top 10 TV Series</title>
+    <meta charset="UTF-8">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+
+<main>
+    <div class="container">
+        <h1>All Series</h1>
+        <div class="flex-right">
+            <a href="/add-series" class="btn btn-right">Add Series</a>
+            <a href="/" class="btn btn-right">Back</a>
+        </div>
+        <div class="series-card-group">
+            <div th:each="eachSeries: ${allSeries}" class="series-card">
+                <h4 th:text="${eachSeries.name}"></h4>
+                <p th:text="${eachSeries.network?.name}"></p>
+                <p th:text="${#strings.listJoin(eachSeries.genres,', ')}"></p>
+                <!--                <p th:each="genre: ${eachSeries.genres}" th:text="${genre}"></p>-->
+                <p th:text="${eachSeries.rating}"></p>
+                <div class="flex-right">
+                    <a th:href="@{/delete-series(seriesId=${eachSeries.Id})}">Delete</a>
+                    <a th:href="@{/edit-series(seriesId=${eachSeries.Id})}">Edit</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</main>
+<div th:replace="~{footer :: footer}"></div>
+
+</body>
+</html>
+

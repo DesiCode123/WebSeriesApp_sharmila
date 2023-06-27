@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Best Series Episodes Summary</title>
+    <meta charset="UTF-8">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+
+<main>
+    <div class="container">
+        <h1>Best Series Episodes Summary</h1>
+        <div class="flex-right">
+            <a class="btn btn-right" href="/summary/best/download">Download as Text</a>
+            <a href="/" class="btn btn-right">Back</a>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Network</th>
+                <th>Genre</th>
+                <th>Season Number</th>
+                <th>Episode Number</th>
+                <th>Episode Name</th>
+                <th>Rating</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="series : ${bestSeriesSummary}">
+                <td th:text="${series.name}"></td>
+                <td th:text="${series.network}"></td>
+                <td th:text="${series.genre}"></td>
+                <td th:text="${series.seasonNumber}"></td>
+                <td th:text="${series.episodeNumber}"></td>
+                <td th:text="${series.episodeName}"></td>
+                <td th:text="${series.episodeRating}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<div th:replace="~{footer :: footer}"></div>
+
+</body>
+</html>
